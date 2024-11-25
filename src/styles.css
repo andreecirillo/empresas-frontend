@@ -1,0 +1,32 @@
+@import "@fortawesome/fontawesome-free/css/all.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-light; /* ou qualquer cor do Tailwind que preferir */
+}
+
+.warning-icon {
+  font-size: 20px !important; /* diminui o ícone de warning */
+}
+
+.info-icon {
+  font-size: 20px !important; /* diminui o ícone de warning */
+}
+
+.warning-icon {
+  font-size: 20px !important; /* diminui o ícone de warning */
+}
+
+:root {  
+  --color-primary: #007BFF,
+  --color-secondary: #6D757D,
+  --color-info: #17A2B8,
+  --color-success: #28A745,
+  --color-warning: #FFC107,
+  --color-danger: #DC3545,
+  --color-dark: #343A40,
+  --color-light: #F8F9FA,
+}

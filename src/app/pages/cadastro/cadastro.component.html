@@ -1,0 +1,77 @@
+<div class="max-w-md mx-auto">
+  <h1 class="text-2xl font-bold text-center">Cadastro de Empresas</h1>
+    
+  <!-- Formulário -->
+  
+    <form
+      [formGroup]="cadastroForm"
+      (ngSubmit)="onSubmit()"
+      novalidate
+      class="needs-validation mt-4 space-y-4"
+      [class.was-validated]="submitted"
+    >
+      <!-- Nome Field -->
+      <div class="mb-3 flex items-start">
+        <label for="nome" class="form-label w-24">Nome</label>
+        <div class="flex flex-col flex-1">
+          <input
+            type="text"
+            id="nome"
+            formControlName="nome"
+            placeholder="Nome"
+            class="form-control w-full p-2"
+            required
+            [class.is-invalid]="submitted && cadastroForm.controls['nome'].invalid"
+          />
+          <div
+            *ngIf="submitted && cadastroForm.controls['nome'].invalid"
+            class="invalid-feedback mt-1"
+          >
+            Prencha o Nome da Empresa.
+          </div>
+        </div>
+      </div>
+
+      <!-- Porte Field -->
+      <div class="mb-3 flex items-start">
+        <label for="porte" class="form-label w-24">Porte</label>
+        <div class="flex flex-col flex-1">
+          <select
+            id="porte"
+            formControlName="porte"
+            class="form-control w-full p-2"
+            required
+            [class.is-invalid]="submitted && cadastroForm.controls['porte'].invalid"
+          >
+            <option value="" disabled>Selecione o porte</option>
+            <option
+              *ngFor="let porte of porteEmpresaKeys"
+              [value]="porte"
+            >
+              {{ getDescricaoPorteEmpresa(porte) }}
+            </option>
+          </select>
+          <div
+            *ngIf="submitted && cadastroForm.controls['porte'].invalid"
+            class="invalid-feedback mt-1"
+          >
+            Selecione o Porte da Empresa.
+          </div>
+        </div>
+      </div>
+      
+
+      <button type="submit" class="btn btn-primary" title="Cadastrar">Cadastrar</button>
+    </form>
+
+    <a
+    title="Excluir Empresa"
+    *ngIf="(empresa$ | async)?.id"    
+    role="button"
+    (click)="excluir()"
+    class="text-danger hover:underline mt-3 block text-center"    
+  >
+    Excluir Empresa
+  </a>
+  
+</div>

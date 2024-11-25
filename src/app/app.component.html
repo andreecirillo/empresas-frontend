@@ -1,0 +1,91 @@
+<!-- app.component.html -->
+<nav class="bg-dark text-light p-4 flex items-center justify-between">
+  <!-- Logo ou título do site -->
+  <div class="text-light font-bold text-xl">
+    <a routerLink="/" class="menu-item" title="Santa Tabela">Empresas</a>
+  </div>
+
+  <!-- Botão do menu hambúrguer para telas menores -->
+  <div class="md:hidden">
+    <button (click)="isOpen = !isOpen" class="text-white focus:outline-none">
+      <span *ngIf="!isOpen" class="fas fa-bars text-2xl"></span>
+      <span *ngIf="isOpen" class="fas fa-times text-2xl"></span>
+    </button>
+  </div>
+
+  <!-- Links do menu para telas maiores -->
+  <div class="hidden md:flex space-x-4">
+    <a routerLink="/" class="menu-item" title="Home">Home</a>
+    <ng-template [ngIf]="!(usuario$ | async)">
+      <a routerLink="/login" class="menu-item" title="Login">Login</a>
+    </ng-template>
+    <ng-template [ngIf]="usuario$ | async">      
+      <a routerLink="/dashboard" class="menu-item" title="Dashboard"
+        >Dashboard</a
+      >
+      <a routerLink="/cadastro" class="menu-item" title="Cadastro">Cadastro</a>
+      <a
+        role="button"
+        (click)="sair()"
+        class="menu-item text-warning"
+        title="Sair"
+      >
+        Sair
+      </a>
+    </ng-template>
+  </div>
+</nav>
+
+<!-- Dropdown do menu para telas menores -->
+<div *ngIf="isOpen" class="md:hidden w-full z-50">
+  <a
+    routerLink="/"
+    class="hamburguer-menu-item"
+    title="Home"
+    routerLinkActive="hamburguer-menu-item-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Home</a
+  >
+
+  <ng-template [ngIf]="!(usuario$ | async)">
+    <a
+      routerLink="/login"
+      class="hamburguer-menu-item"
+      title="Login"
+      routerLinkActive="hamburguer-menu-item-active"
+      >Login</a
+    >
+  </ng-template>
+
+  <ng-template [ngIf]="usuario$ | async">    
+    <a
+      routerLink="/dashboard"
+      class="hamburguer-menu-item"
+      title="Dashboard"
+      routerLinkActive="hamburguer-menu-item-active"
+      >Dashboard</a
+    >
+    <a
+      routerLink="/cadastro"
+      class="hamburguer-menu-item"
+      routerLinkActive="hamburguer-menu-item-active"
+      title="Cadastro"
+      >Cadastro</a
+    >
+    <a
+      role="button"
+      (click)="sair()"
+      class="hamburguer-menu-item text-warning"
+      title="Créditos"
+      >Sair</a
+    >
+  </ng-template>
+</div>
+
+<div class="loading-overlay" *ngIf="isLoading$ | async">
+  <div class="spinner"></div>
+</div>
+
+<div class="p-6 text-center">
+  <router-outlet></router-outlet>
+</div>

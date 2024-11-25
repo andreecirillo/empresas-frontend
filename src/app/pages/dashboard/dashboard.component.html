@@ -1,0 +1,27 @@
+<div class="container mx-auto p-4">
+  <h1 class="text-2xl font-bold mb-4">Lista de Empresas</h1>
+  <div class="overflow-x-auto">
+    <table class="table-auto w-full border-collapse border border-secondary">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border border-secondary px-4 py-2 text-left">ID</th>
+          <th class="border border-secondary px-4 py-2 text-left">Nome</th>
+          <th class="border border-secondary px-4 py-2 text-left">Porte</th>
+          <th class="border border-secondary px-4 py-2 text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empresa of empresas$ | async">
+          <td class="border border-secondary px-4 py-2">{{ empresa.id }}</td>
+          <td class="border border-secondary px-4 py-2">{{ empresa.nome }}</td>
+          <td class="border border-secondary px-4 py-2">
+            {{ getDescricaoPorteEmpresa(empresa.porte) }}
+          </td>
+          <td class="border border-secondary px-4 py-2">
+            <a routerLink="/cadastro/{{empresa.id}}" class="text-primary hover:underline">Editar</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
