@@ -24,7 +24,8 @@
     "paths": {
       "@store/*": ["src/app/store/*"], // Alias para store
       "@models/*": ["src/app/models/*"], // Alias para modelos
-      "@services/*": ["src/app/services/*"] // Alias para services
+      "@services/*": ["src/app/services/*"], // Alias para services
+      "@environments/*": ["src/environments/*"] // Alias para services
     }
   },
   "angularCompilerOptions": {

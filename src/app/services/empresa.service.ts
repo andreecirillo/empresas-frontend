@@ -4,12 +4,13 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Empresa, PorteEmpresa } from '@models/empresa.model';
+import { environment } from '@environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EmpresaService {
-  private apiUrl = 'https://localhost:7042/api/Empresas';  
+  private apiUrl = environment.apiUrl; 
 
   constructor(private http: HttpClient) {}
 

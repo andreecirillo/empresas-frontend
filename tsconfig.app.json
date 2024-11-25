@@ -9,7 +9,8 @@
     "paths": {
       "@store/*": ["src/app/store/*"], // Alias para a pasta store
       "@models/*": ["src/app/models/*"], // Alias para modelos
-      "@services/*": ["src/app/services/*"] // Alias para services
+      "@services/*": ["src/app/services/*"], // Alias para services
+      "@environments/*": ["src/environments/*"] // Alias para services
     }
   },
   "files": ["src/main.ts"],
